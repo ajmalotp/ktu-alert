@@ -12,13 +12,14 @@ function checkForChange() {
   //The string to search for
   var find = 'S3';
   
-  var url = 'https://ktu.edu.in/eu/core/announcements.htm';
+  var url = 'https://ktu.edu.in/eu/core/announcements.htm'; 
   var html = UrlFetchApp.fetch(url).getContentText();
  
   html = html.substring(0,15000);
   
   var regex = /<b>/gi, result, indices = [];
-  while ( (result = regex.exec(html)) ) {
+  while ( (result = regex.exec(html)) )// cecking condition using while loop 
+  {
     indices.push(result.index);
   }
   
@@ -29,6 +30,7 @@ function checkForChange() {
     
     var sheet = SpreadsheetApp.getActiveSheet();  
     var cell = sheet.getRange(1,1);
+   
     
     if(cell.getValue() == ''){
       cell.setValue(text);
