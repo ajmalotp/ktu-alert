@@ -18,7 +18,7 @@ function checkForChange() {
   html = html.substring(0,15000);
   
   var regex = /<b>/gi, result, indices = [];
-  while ( (result = regex.exec(html)) ) {
+  while( (result = regex.exec(html)) ) {
     indices.push(result.index);
   }
   
@@ -27,7 +27,7 @@ function checkForChange() {
   //checks if the extracted html contains the find string
   if(text.indexOf(find) != -1){
     
-    var sheet = SpreadsheetApp.getActiveSheet();  
+    var sheet = SpreadsheetApp.getActiveSheet();   // intilastion of veriables 
     var cell = sheet.getRange(1,1);
     
     if(cell.getValue() == ''){
