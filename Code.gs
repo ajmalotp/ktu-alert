@@ -1,3 +1,4 @@
+hello
 
 function init() {  
   if (ScriptApp.getProjectTriggers().length == 0) {
@@ -14,7 +15,7 @@ function checkForChange() {
   
   var url = 'https://ktu.edu.in/eu/core/announcements.htm';
   var html = UrlFetchApp.fetch(url).getContentText();
- 
+
   html = html.substring(0,15000);
   
   var regex = /<b>/gi, result, indices = [];
@@ -28,14 +29,14 @@ function checkForChange() {
   if(text.indexOf(find) != -1){
     
     var sheet = SpreadsheetApp.getActiveSheet();  
-    var cell = sheet.getRange(1,1);
+    var cell = sheet.getRange(1,1); 
     
-    if(cell.getValue() == ''){
+    if(cell.getValue() == ''){ // for checking 
       cell.setValue(text);
       MailApp.sendEmail('biswasb007@gmail.com', 'ktu alert', 'New change for '+find+'\n'+text)
     }
     
-    else if(cell.getValue() != text){
+    else if(cell.getValue() != text){ // else codition checking
       cell.setValue(text);
       MailApp.sendEmail('biswasb007@gmail.com', 'ktu alert', 'New change for '+find+'\n'+text)
     }
